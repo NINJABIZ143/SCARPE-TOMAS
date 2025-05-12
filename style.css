@@ -1,0 +1,217 @@
+/* Stili di base per il sito */ 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header e navigazione */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f39c12; /* Arancione per effetto hover */
+    transform: scale(1.1); /* Leggera espansione al passaggio del mouse */
+}
+
+/* Sezioni principali */
+section {
+    padding: 20px;
+}
+
+/* Intro con effetto fade-in */
+.intro {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.1rem;
+}
+
+/* La nostra storia con effetto fade-in */
+.about {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s 0.5s forwards;
+}
+
+.about h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.about p {
+    font-size: 1.1rem;
+}
+
+/* Animazioni per i prodotti */
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.product {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+    animation: fadeInUp 1s 1s forwards;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product:hover {
+    transform: translateY(-10px); /* Leggera animazione al passaggio del mouse */
+}
+
+/* Prezzi con sconto */
+.price-original {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 1rem;
+}
+
+.price-new {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Animazioni di caricamento */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.carrello {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.carrello ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.carrello li {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#totale {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.intro img {
+    max-width: 100%; /* Rende l'immagine responsiva */
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Sezione "Noi collaboriamo con" */
+.collaboration {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.collaboration p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white; /* Imposta il testo in bianco */
+    text-decoration: underline; /* Sottolinea il testo */
+    background-color: #333; /* Imposta uno sfondo scuro per contrasto */
+    display: inline-block; /* Rende il testo un blocco per la gestione dello sfondo */
+    padding: 5px 10px; /* Aggiungi del padding per migliorare l'aspetto */
+}
+
+.collab-image {
+    width: 100px; /* Imposta la larghezza dell'immagine */
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+

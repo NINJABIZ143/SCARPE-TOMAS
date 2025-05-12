@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - ScarpeXYZ</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Funzione per aggiungere prodotti al carrello
+        function aggiungiCarrello(nomeProdotto, prezzo) {
+            const carrelloList = document.getElementById('carrello-list');
+            const totalElement = document.getElementById('totale');
+            const li = document.createElement('li');
+            li.textContent = `${nomeProdotto} - €${prezzo.toFixed(2)}`;
+            carrelloList.appendChild(li);
+
+            // Aggiornare il totale del carrello
+            let totale = parseFloat(totalElement.textContent.replace("Totale: €", ""));
+            totale += prezzo;
+            totalElement.textContent = `Totale: €${totale.toFixed(2)}`;
+        }
+
+        // Funzione per applicare lo sconto
+        function applicaSconto(button, prezzoOriginale) {
+            let container = button.parentElement;
+            let input = container.querySelector('.coupon-input');
+            let priceElement = container.querySelector('.price-new');
+            
+            if (input.value === "TOMAS77") {
+                let nuovoPrezzo = prezzoOriginale - 40;
+                if (nuovoPrezzo < 0) nuovoPrezzo = 0;
+                priceElement.textContent = `€${nuovoPrezzo.toFixed(2)}`;
+                // Aggiungi il prodotto con il prezzo scontato al carrello
+                aggiungiCarrello(container.querySelector('h3').textContent, nuovoPrezzo);
+            } else {
+                alert("Codice sconto non valido!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Chi Siamo</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="carrello.html">Vai al Carrello</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="marketplace">
+        <h1>Il nostro Marketplace</h1>
+        <p>Esplora la nostra selezione di scarpe in vendita. Trova il modello che fa per te!</p>
+
+        <div class="products">
+            <!-- Prodotto Adidas Court Tourino con sconto -->
+            <div class="product">
+                <a href="product_1.html">
+                    <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cea37122bfc745cebcddade900fe1776_9366/Scarpe_Court_Tourino_Bianco_GZ0815_02_standard_hover.jpg" alt="Scarpa Adidas Court Tourino">
+                    <h3>Adidas Court Tourino</h3>
+                    <p>
+                        <span class="price-original">€89.99</span> 
+                        <span class="price-new">€79.99</span>
+                    </p>
+                </a>
+                <input type="text" class="coupon-input" placeholder="Inserisci codice sconto">
+                <button onclick="applicaSconto(this, 79.99)">Applica Sconto</button>
+                <button onclick="aggiungiCarrello('Adidas Court Tourino', 79.99)">Aggiungi al Carrello</button>
+            </div>
+
+            <!-- Prodotto Air Jordan 4 Retro senza sconto -->
+            <div class="product">
+                <a href="product_2.html">
+                    <img src="https://th.bing.com/th/id/OIP.bwu7IxmUonaunXXSahm-mAHaEX?rs=1&pid=ImgDetMain" alt="Air Jordan 4 Retro">
+                    <h3>Air Jordan 4 Retro</h3>
+                    <p>Prezzo: <span class="price-original">€199.99</span> <span class="price-new">€199.99</span></p>
+                </a>
+                <input type="text" class="coupon-input" placeholder="Inserisci codice sconto">
+                <button onclick="applicaSconto(this, 199.99)">Applica Sconto</button>
+                <button onclick="aggiungiCarrello('Air Jordan 4 Retro', 199.99)">Aggiungi al Carrello</button>
+            </div>
+
+            <!-- Prodotto Calze Balenciaga con sconto -->
+            <div class="product">
+                <a href="product_3.html">
+                    <img src="https://th.bing.com/th/id/R.5968b76260041e3158b965bd81336d49?rik=vSIvaRBbNMd71Q&pid=ImgRaw&r=0" alt="Calze Balenciaga">
+                    <h3>Calze Balenciaga</h3>
+                    <p>
+                        <span class="price-original">€45.00</span> 
+                        <span class="price-new">€40.05</span>
+                    </p>
+                </a>
+                <input type="text" class="coupon-input" placeholder="Inserisci codice sconto">
+                <button onclick="applicaSconto(this, 40.05)">Applica Sconto</button>
+                <button onclick="aggiungiCarrello('Calze Balenciaga', 40.05)">Aggiungi al Carrello</button>
+            </div>
+
+            <!-- Prodotto Scarpe X_PLRPhase senza sconto -->
+            <div class="product">
+                <a href="product_4.html">
+                    <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0e0ae245cc814ea7920bb59dcd1a65ab_9366/Scarpe_X_PLRPHASE_Marrone_IG6307_01_00_standard.jpg" alt="Scarpe X_PLRPhase">
+                    <h3>Scarpe X_PLRPhase</h3>
+                    <p>Prezzo: <span class="price-original">€79.99</span> <span class="price-new">€79.99</span></p>
+                </a>
+                <input type="text" class="coupon-input" placeholder="Inserisci codice sconto">
+                <button onclick="applicaSconto(this, 79.99)">Applica Sconto</button>
+                <button onclick="aggiungiCarrello('Scarpe X_PLRPhase', 79.99)">Aggiungi al Carrello</button>
+            </div>
+
+            <!-- Prodotto Jordan 11 senza sconto -->
+            <div class="product">
+                <a href="product_5.html">
+                    <img src="https://th.bing.com/th/id/R.df5ffac8cb271821cecdd4fa639c6d26?rik=3F0l3d5y5lpPxQ&pid=ImgRaw&r=0" alt="Jordan 11">
+                    <h3>Jordan 11</h3>
+                    <p>Prezzo: <span class="price-original">€229.99</span> <span class="price-new">€229.99</span></p>
+                </a>
+                <input type="text" class="coupon-input" placeholder="Inserisci codice sconto">
+                <button onclick="applicaSconto(this, 229.99)">Applica Sconto</button>
+                <button onclick="aggiungiCarrello('Jordan 11', 229.99)">Aggiungi al Carrello</button>
+            </div>
+
+            <!-- Prodotto Scarpe FORTNITE Bimbo Nutelloso con sconto -->
+            <div class="product">
+                <a href="product_6.html">
+                    <img src="https://th.bing.com/th/id/R.556d49af7397b71fb8c4d194956f3261?rik=ZMesOcnjMXKKvQ&pid=ImgRaw&r=0" alt="Scarpe FORTNITE Bimbo Nutelloso">
+                    <h3>Scarpe FORTNITE Bimbo Nutelloso</h3>
+                    <p>Prezzo: 1000 V-Bucks</p>
+                </a>
+                <input type="text" class="coupon-input" placeholder="Inserisci codice sconto">
+                <button onclick="applicaSconto(this, 1000)">Applica Sconto</button>
+                <button onclick="aggiungiCarrello('Scarpe FORTNITE Bimbo Nutelloso', 1000)">Aggiungi al Carrello</button>
+            </div>
+        </div>
+
+        <div class="carrello">
+            <h2>Carrello</h2>
+            <ul id="carrello-list"></ul>
+            <p id="totale">Totale: €0.00</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Scarpe TOMAS - Tutti i diritti riservati</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+

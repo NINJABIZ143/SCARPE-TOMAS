@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello - ScarpeXYZ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Chi Siamo</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="carrello.html">Carrello</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="carrello">
+        <h1>Il Tuo Carrello</h1>
+        <p>Rivedi il tuo ordine prima di procedere al pagamento.</p>
+
+        <div id="order-details">
+            <h2>Dettagli Ordine</h2>
+            <ul id="carrello-list">
+                <!-- Gli articoli selezionati saranno mostrati qui -->
+            </ul>
+            <p id="totale">Totale: €0.00</p>
+
+            <!-- Sezione IVA e spedizione -->
+            <h3>Spese di spedizione e IVA</h3>
+            <p id="iva">IVA: €0.00</p>
+            <p id="spedizione">Spedizione: €10.00</p>
+            <p id="totale-con-spedizione">Totale con spedizione: €0.00</p>
+
+            <form action="#" method="POST">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="indirizzo">Indirizzo di spedizione:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+
+                <label for="metodo-pagamento">Metodo di pagamento:</label>
+                <select id="metodo-pagamento" name="metodo-pagamento">
+                    <option value="carta">Carta di credito</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+
+                <button type="submit">Procedi con l'acquisto</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Scarpe TOMAS - Tutti i diritti riservati</p>
+    </footer>
+
+    <script>
+        // Funzione per aggiornare IVA e totale in base al prodotto
+        function aggiornaTotale() {
+            const carrello = JSON.parse(localStorage.getItem('carrello') || '[]');
+            let totale = 0;
+            let iva = 0;
+            let prodotto = '';
+
+            // Aggiungi i prodotti selezionati e calcola IVA
+            carrello.forEach(item => {
+                totale += item.prezzo;
+                prodotto = item.nome;
+            });
+
+            if (prodotto === 'Calze Balenciaga') {
+                iva = 3;
+            } else if (prodotto === 'Air Jordan 4 Retro') {
+                iva = 4;
+            } else if (prodotto === 'Adidas Court Tourino') {
+                iva = 20;
+            }
+
+            const spedizione = 10; // Spedizione fissa di 10€
+
+            // Calcola il totale con spedizione
+            const totaleConSpedizione = totale + iva + spedizione;
+
+            // Aggiorna il DOM
+            document.getElementById('totale').textContent = `Totale: €${totale.toFixed(2)}`;
+            document.getElementById('iva').textContent = `IVA: €${iva.toFixed(2)}`;
+            document.getElementById('spedizione').textContent = `Spedizione: €${spedizione.toFixed(2)}`;
+            document.getElementById('totale-con-spedizione').textContent = `Totale con spedizione: €${totaleConSpedizione.toFixed(2)}`;
+        }
+
+        // Chiama la funzione per aggiornare il totale
+        aggiornaTotale();
+    </script>
+</body>
+</html>
